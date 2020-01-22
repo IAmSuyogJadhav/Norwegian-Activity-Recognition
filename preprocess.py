@@ -1,4 +1,8 @@
 import numpy as np
+try:
+    from tsnecuda import TSNE as tsne
+except ImportError:
+    print('Please run install_tsnecuda.sh to install tsnecuda first.')
 
 
 def split_data(X, Y):
@@ -23,3 +27,7 @@ def split_data(X, Y):
 # Y = np.load("./raw-to-epoch/Y.npy")
 
 # X_cleaned, Y_cleaned = split_data(X, Y)
+
+
+def fast_tsne(arr, n_components=2):
+    return tsne(n_components=n_components).fit_transform(arr)
