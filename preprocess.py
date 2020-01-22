@@ -5,7 +5,7 @@ def split_data(X, Y):
     assert (len(X) == len(Y)), "The lengths of X should be same as Y."
     assert len(X) % 3 == 0, "The no. of rows should be divisible by 3"
 
-    l = len(X) / 3
+    l = len(X) // 3
     X_x, X_y, X_z = X[l*0:l*1], X[l*1:l*2], X[l*2:l*3]
     Y_x, Y_y, Y_z = Y[l*0:l*1], Y[l*1:l*2], Y[l*2:l*3]
     nonzero_idx = ((Y_x != 0) | (Y_y != 0) | (Y_z != 0)).squeeze()
