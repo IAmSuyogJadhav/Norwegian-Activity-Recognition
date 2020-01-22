@@ -6,6 +6,11 @@ except ImportError:
 
 
 def split_data(X, Y):
+    # Example Usage
+    # X = np.load("./raw-to-epoch/X.npy").squeeze()
+    # Y = np.load("./raw-to-epoch/Y.npy")
+    # X_cleaned, Y_cleaned = split_data(X, Y)
+
     assert (len(X) == len(Y)), "The lengths of X should be same as Y."
     assert len(X) % 3 == 0, "The no. of rows should be divisible by 3"
 
@@ -22,12 +27,15 @@ def split_data(X, Y):
     Y_cleaned = np.hstack([Y_x.ravel()[..., None], Y_y.ravel()[..., None], Y_z.ravel()[..., None]])
     return X_cleaned, Y_cleaned
 
-# Example Usage
-# X = np.load("./raw-to-epoch/X.npy").squeeze()
-# Y = np.load("./raw-to-epoch/Y.npy")
-
-# X_cleaned, Y_cleaned = split_data(X, Y)
-
 
 def fast_tsne(arr, n_components=2):
+    # @article{chan2019gpu,
+    #     title={GPU accelerated t-distributed stochastic neighbor embedding},
+    #     author={Chan, David M and Rao, Roshan and Huang, Forrest and Canny, John F},
+    #     journal={Journal of Parallel and Distributed Computing},
+    #     volume={131},
+    #     pages={1--13},
+    #     year={2019},
+    #     publisher={Elsevier}
+    # }
     return tsne(n_components=n_components).fit_transform(arr)
