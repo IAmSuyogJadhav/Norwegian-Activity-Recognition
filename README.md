@@ -1,0 +1,1 @@
+# Norwegian-Activity-Recognition
