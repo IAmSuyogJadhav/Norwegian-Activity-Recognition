@@ -1,4 +1,3 @@
-
 # Change CUDA version if needed
 conda install faiss-gpu cudatoolkit=10.0 -c pytorch
 sudo apt install libopenblas-dev
@@ -9,7 +8,8 @@ tar xvjf tsnecuda-2.1.0-cuda100.tar.bz2 --wildcards 'site-packages/*'
 
 # Fill your username below. Change python version if needed
 cp -r site-packages/* /home/username/anaconda3/lib/python3.7/site-packages/
-!cp ./lib/libfaiss.so /usr/local/cuda/lib64/
+sudo mkdir -p /usr/local/cuda/lib64
+cp ./lib/libfaiss.so /usr/local/cuda/lib64/
 
 # To force update the library path
 sudo echo /usr/local/cuda/lib64/ >> /etc/ld.so.conf
